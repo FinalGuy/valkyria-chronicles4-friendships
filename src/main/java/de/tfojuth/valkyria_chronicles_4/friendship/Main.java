@@ -8,7 +8,9 @@ public class Main {
         Einheiten alleEinheiten = new EinheitenCsvLoader().alle();
         System.out.println(alleEinheiten + "\n");
         Freundeskreise freundeskreise = alleEinheiten.freundeskreise();
-        System.out.println(freundeskreise);
+        System.out.println(freundeskreise + "\n");
+        EngeFreundeskreise engeFreundeskreise = alleEinheiten.engeFreundeskreise();
+        System.out.println(engeFreundeskreise);
     }
 
 }

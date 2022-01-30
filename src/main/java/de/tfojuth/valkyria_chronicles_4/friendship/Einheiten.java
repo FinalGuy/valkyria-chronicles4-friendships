@@ -4,7 +4,7 @@ import java.util.*;
 
 import static java.util.stream.Collectors.joining;
 
-public class Einheiten {
+public final class Einheiten {
 
     private final Map<Einheit, Collection<Einheit>> einheitZuFreunden = new HashMap<>();
 
@@ -20,6 +20,21 @@ public class Einheiten {
             freundeskreise.neuerFreundeskreis(neuerFreundeskreis);
         });
         return freundeskreise;
+    }
+
+    public EngeFreundeskreise engeFreundeskreise() {
+        EngeFreundeskreise engeFreundeskreise = new EngeFreundeskreise();
+        einheitZuFreunden.forEach((einheit, freunde) -> {
+            if (freunde.isEmpty()) {
+                return;
+            }
+            if (freunde.stream().allMatch(f -> einheitZuFreunden.get(f).contains(einheit))) {
+                Freundeskreis engerFreundeskreis = new Freundeskreis(freunde);
+                engerFreundeskreis.fügeHinzu(einheit);
+                engeFreundeskreise.fügeHinzu(engerFreundeskreis);
+            }
+        });
+        return engeFreundeskreise;
     }
 
     public int anzahl() {

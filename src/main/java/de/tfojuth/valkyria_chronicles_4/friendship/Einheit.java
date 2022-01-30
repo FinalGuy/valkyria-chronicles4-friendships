@@ -5,7 +5,7 @@ import lombok.ToString;
 
 @ToString
 @EqualsAndHashCode
-public class Einheit implements Comparable<Einheit> {
+public final class Einheit implements Comparable<Einheit> {
 
     private final String name;
 
@@ -20,5 +20,9 @@ public class Einheit implements Comparable<Einheit> {
     @Override
     public int compareTo(Einheit andereEinheit) {
         return this.name.compareTo(andereEinheit.name);
+    }
+
+    public boolean istBefreundedMit(Einheit einheit) {
+        return false;
     }
 }
