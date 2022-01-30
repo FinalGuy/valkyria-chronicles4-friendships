@@ -17,7 +17,6 @@ public final class Freundeskreise {
         freundeskreise
                 .stream()
                 .filter(f -> f.hatÜberschneidungMit(neuerFreundeskreis))
-                .peek(f -> log.debug("Treffer für Freundeskreis: " + f))
                 .findFirst()
                 .ifPresentOrElse(
                         passenderFreundeskreis -> passenderFreundeskreis.fügeHinzu(neuerFreundeskreis),

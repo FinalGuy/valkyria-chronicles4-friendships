@@ -18,20 +18,11 @@ public final class Freundeskreis {
     }
 
     public void fügeHinzu(Freundeskreis andererFreundeskreis) {
-        log.debug("integriere Freundeskreis: " + andererFreundeskreis);
         this.freunde.addAll(andererFreundeskreis.freunde);
-        log.debug("Ergebnis der Integration :" + this);
     }
 
     public void fügeHinzu(Einheit freund) {
-        log.debug("integriere Freund: " + freund);
         this.freunde.add(freund);
-        log.debug("Ergebnis der Integration: " + this);
-    }
-
-    @Override
-    public String toString() {
-        return "[" + freunde.stream().map(Einheit::name).collect(joining(",")) + "]";
     }
 
     public boolean hatÜberschneidungMit(Freundeskreis andererFreundeskreis) {
@@ -39,5 +30,10 @@ public final class Freundeskreis {
         boolean result = !disjoint(freunde, andererFreundeskreis.freunde);
         log.debug("Überschneidung gefunden: " + result);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "[" + freunde.stream().map(Einheit::name).collect(joining(",")) + "]";
     }
 }
