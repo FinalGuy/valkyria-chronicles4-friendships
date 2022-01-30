@@ -17,23 +17,26 @@ public final class Freundeskreis {
         this.freunde.addAll(initialeFreunde);
     }
 
-    public void fügeHinzu(Freundeskreis andererFreundeskreis) {
+    public Freundeskreis fügeHinzu(Freundeskreis andererFreundeskreis) {
         this.freunde.addAll(andererFreundeskreis.freunde);
+        return this;
     }
 
-    public void fügeHinzu(Einheit freund) {
+    public Freundeskreis fügeHinzu(Einheit freund) {
         this.freunde.add(freund);
+        return this;
     }
 
     public boolean hatÜberschneidungMit(Freundeskreis andererFreundeskreis) {
-        log.debug("prüfe auf Überschneidungen: " + this + " | " + andererFreundeskreis);
-        boolean result = !disjoint(freunde, andererFreundeskreis.freunde);
-        log.debug("Überschneidung gefunden: " + result);
-        return result;
+        return !disjoint(freunde, andererFreundeskreis.freunde);
+    }
+
+    public boolean hatKeineÜberschneidungMit(Freundeskreis freundeskreis) {
+        return !hatÜberschneidungMit(freundeskreis);
     }
 
     @Override
     public String toString() {
-        return "[" + freunde.stream().map(Einheit::name).collect(joining(",")) + "]";
+        return "[" + freunde.stream().map(Einheit::name).collect(joining(",")) + "]" + "(" + freunde.size() + ")";
     }
 }

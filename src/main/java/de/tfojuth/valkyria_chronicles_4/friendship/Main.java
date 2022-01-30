@@ -5,7 +5,9 @@ import de.tfojuth.valkyria_chronicles_4.friendship.persistence.EinheitenCsvLoade
 public class Main {
 
     public static void main(String[] arguments) {
-        Freundeskreise freundeskreise = new EinheitenCsvLoader().alle().freundeskreise();
+        Einheiten alleEinheiten = new EinheitenCsvLoader().alle();
+        System.out.println(alleEinheiten + "\n");
+        Freundeskreise freundeskreise = alleEinheiten.freundeskreise();
         System.out.println(freundeskreise);
     }
 

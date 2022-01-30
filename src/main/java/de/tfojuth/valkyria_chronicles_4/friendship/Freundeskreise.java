@@ -14,19 +14,27 @@ public final class Freundeskreise {
 
     public void neuerFreundeskreis(Freundeskreis neuerFreundeskreis) {
         log.debug("Füge neuen Freundeskreis hinzu: " + neuerFreundeskreis);
-        freundeskreise
+
+        var freundeskreiseOhneÜberschneidungen = freundeskreise
+                .stream()
+                .filter(f -> f.hatKeineÜberschneidungMit(neuerFreundeskreis))
+                .toList();
+
+        var neuerKombinierterFreundeskreis = freundeskreise
                 .stream()
                 .filter(f -> f.hatÜberschneidungMit(neuerFreundeskreis))
-                .findFirst()
-                .ifPresentOrElse(
-                        passenderFreundeskreis -> passenderFreundeskreis.fügeHinzu(neuerFreundeskreis),
-                        () -> freundeskreise.add(neuerFreundeskreis)
-                );
+                .reduce(neuerFreundeskreis, Freundeskreis::fügeHinzu);
+
+        freundeskreise.clear();
+        freundeskreise.addAll(freundeskreiseOhneÜberschneidungen);
+        freundeskreise.add(neuerKombinierterFreundeskreis);
+        log.debug(freundeskreise);
     }
 
     @Override
     public String toString() {
         return "Freundeskreise:\n" +
+                "===============\n" +
                 freundeskreise.stream().map(Freundeskreis::toString).collect(joining("\n"));
     }
 }
