@@ -13,10 +13,11 @@ public class Einheiten {
     }
 
     public Freundeskreise freundeskreise() {
-        Freundeskreise freundeskreise = new Freundeskreise();
+        var freundeskreise = new Freundeskreise();
         einheitZuFreunden.forEach((einheit, freunde) -> {
-            Freundeskreis freundeskreis = freundeskreise.freundeskreisVon(einheit);
-            freundeskreis.fügeHinzu(freunde);
+            var neuerFreundeskreis = new Freundeskreis(freunde);
+            neuerFreundeskreis.fügeHinzu(einheit);
+            freundeskreise.neuerFreundeskreis(neuerFreundeskreis);
         });
         return freundeskreise;
     }
