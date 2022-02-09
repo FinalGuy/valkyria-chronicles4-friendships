@@ -44,6 +44,7 @@ public final class Einheiten {
     @Override
     public String toString() {
         return "Einheiten:\n" +
+                "==========\n" +
                 einheitZuFreunden.entrySet()
                         .parallelStream()
                         .sorted(Map.Entry.comparingByKey())

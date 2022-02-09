@@ -33,8 +33,11 @@ public final class Freundeskreise {
 
     @Override
     public String toString() {
-        return "Freundeskreise:\n" +
+        return "Freundeskreise(" + freundeskreise.size() + "):\n " +
                 "===============\n" +
-                freundeskreise.stream().map(Freundeskreis::toString).collect(joining("\n"));
+                freundeskreise.stream()
+                        .map(Freundeskreis::toString)
+                        .map(line -> "\t" + line)
+                        .collect(joining("\n"));
     }
 }
