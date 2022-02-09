@@ -16,8 +16,8 @@ public class EngeFreundeskreise {
 
     @Override
     public String toString() {
-        return "Enge Freundeskreise(" + engeFreundekreise.size() + ":\n" +
-                "====================\n" +
+        return "Enge Freundeskreise(" + engeFreundekreise.size() + "):\n" +
+                "===================\n" +
                 engeFreundekreise.stream()
                         .map(Freundeskreis::toString)
                         .map(line -> "\t" + line)
