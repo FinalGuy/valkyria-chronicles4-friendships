@@ -1,7 +1,7 @@
 package de.tfojuth.valkyria_chronicles_4.friendship.persistence;
 
-import de.tfojuth.valkyria_chronicles_4.friendship.Einheiten;
-import de.tfojuth.valkyria_chronicles_4.friendship.EinheitenLaden;
+import de.tfojuth.valkyria_chronicles_4.friendship.Truppengeschichten;
+import de.tfojuth.valkyria_chronicles_4.friendship.TruppengeschichtenLaden;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,20 +9,19 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import static java.lang.ClassLoader.getSystemResourceAsStream;
-import static java.util.stream.Collectors.toMap;
 
-public class EinheitenCsvLoader implements EinheitenLaden {
+public class TruppengeschichtenCsvLoader implements TruppengeschichtenLaden {
 
-    private static final String FILE = "friendships.csv";
+    private static final String FILE = "Truppengeschichten.csv";
 
     @Override
-    public Einheiten alle() {
+    public Truppengeschichten alle() {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(csvStream()))) {
-            return new Einheiten(bufferedReader
+            return new Truppengeschichten(bufferedReader
                     .lines()
-                    .map(EinheitCsvZeile::new)
-                    .collect(toMap(EinheitCsvZeile::einheit, EinheitCsvZeile::freunde))
-            );
+                    .map(TruppengeschichteCsvZeile::new)
+                    .map(TruppengeschichteCsvZeile::zuTruppengeschichte)
+                    .toList());
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }
