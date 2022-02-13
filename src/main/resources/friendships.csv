@@ -1,6 +1,7 @@
 Aladdin  ,Leonhardt+Neige+Laurent
-Aoife    ,Neige+Jascha
+Aoife    ,Neige+Hanna+Jascha
 Aulard   ,Dan
+Azusa    ,Kai+Scott+Norid
 Brittany ,Millennia+Rita
 Claude   ,
 Connor   ,Jester+Teresa
@@ -11,11 +12,12 @@ Emmy     ,
 Ferrier  ,Stanley+Jean
 Fleuret  ,Mabel
 Godwin   ,Rosetta+Nico
-Jascha   ,Aulard+Aoife
+Hanna    ,Stanley+Jascha+Aoife
+Jascha   ,Hanna+Aulard+Aoife
 Jean     ,Stanley+Viola+Ferrier
 Jester   ,Vancey+Teresa+Connor
 Jimmy    ,Lily+Odin+Keigel
-Kai      ,Riley+Raz
+Kai      ,Riley+Raz+Azusa
 Keigel   ,Ryan+Jimmy
 Laurent  ,Aladdin+Curtis
 Leonhardt,Aladdin+Neige
@@ -25,7 +27,7 @@ Millennia,Teresa+Brittany+Rita
 Minerva  ,Ronald+Mabel
 Neige    ,Aladdin+Leonhardt+Aoife
 Nico     ,Lily+Godwin+Rosetta
-Norid    ,Claude+Scott
+Norid    ,Claude+Scott+Azusa
 Odin     ,Ryan+Lily+Jimmy
 Raz      ,Claude+Kai+Zaiga
 Rebecca  ,Mabel
@@ -34,9 +36,9 @@ Rita     ,Dan+Millennia+Brittany
 Ronald   ,
 Rosetta  ,Dan+Godwin+Nico
 Ryan     ,Odin+Keigel
-Scott    ,Norid
+Scott    ,Norid+Azusa
 Simon    ,
-Stanley  ,Ferrier+Jean
+Stanley  ,Ferrier+Jean+Hanna
 Teresa   ,Jester+Millennia+Connor
 Vancey   ,Zaiga+Jester
 Viola    ,Jean
