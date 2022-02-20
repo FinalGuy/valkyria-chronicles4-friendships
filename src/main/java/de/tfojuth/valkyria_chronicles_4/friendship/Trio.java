@@ -2,6 +2,7 @@ package de.tfojuth.valkyria_chronicles_4.friendship;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -19,6 +20,10 @@ public class Trio {
             throw new IllegalArgumentException("Erwartete Einheitenliste mit exakt drei Einheiten. Erhielt: " + einheiten);
         }
         return new Trio(einheiten.get(0), einheiten.get(1), einheiten.get(2));
+    }
+
+    public List<Einheit> alsListe() {
+        return List.of(eins, zwei, drei);
     }
 
     @Override

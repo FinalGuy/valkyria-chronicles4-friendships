@@ -2,6 +2,7 @@ package de.tfojuth.valkyria_chronicles_4.friendship;
 
 import de.tfojuth.valkyria_chronicles_4.friendship.persistence.EinheitenCsvLoader;
 import de.tfojuth.valkyria_chronicles_4.friendship.persistence.TruppengeschichtenCsvLoader;
+import de.tfojuth.valkyria_chronicles_4.friendship.view.Konsolenausgabe;
 
 import java.util.Collection;
 
@@ -9,13 +10,19 @@ public class Main {
 
     public static void main(String[] arguments) {
         Einheiten alleEinheiten = new EinheitenCsvLoader().alle();
-        System.out.println(alleEinheiten + "\n");
         Freundeskreise freundeskreise = alleEinheiten.freundeskreise();
-        System.out.println(freundeskreise + "\n");
         EngeFreundeskreise engeFreundeskreise = alleEinheiten.engeFreundeskreise();
-        System.out.println(engeFreundeskreise + "\n");
-        Truppengeschichten alleTruppengeschichten = new TruppengeschichtenCsvLoader().alle();
-        System.out.println(alleTruppengeschichten);
+        var alleBekanntenTruppengeschichten = new TruppengeschichtenCsvLoader().alle();
+        var vermuteteTruppengeschichten = new VermuteteTruppengeschichten(alleBekanntenTruppengeschichten, engeFreundeskreise);
+
+        var konsolenausgabe = new Konsolenausgabe(
+                alleEinheiten,
+                freundeskreise,
+                engeFreundeskreise,
+                alleBekanntenTruppengeschichten,
+                vermuteteTruppengeschichten
+        );
+        konsolenausgabe.anzeigen();
     }
 
 }

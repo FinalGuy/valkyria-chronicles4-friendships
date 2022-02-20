@@ -3,6 +3,8 @@ package de.tfojuth.valkyria_chronicles_4.friendship;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.joining;
 
@@ -10,6 +12,13 @@ import static java.util.stream.Collectors.joining;
 public class Truppengeschichten {
 
     private final Collection<Truppengeschichte> truppengeschichten;
+
+    public Collection<Einheit> teilEinerTruppengeschichte() {
+        return truppengeschichten.stream()
+                .map(Truppengeschichte::beteiligteEinheiten)
+                .flatMap(Collection::stream)
+                .toList();
+    }
 
     @Override
     public String toString() {

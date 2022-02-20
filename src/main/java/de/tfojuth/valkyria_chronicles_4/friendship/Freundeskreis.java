@@ -3,9 +3,11 @@ package de.tfojuth.valkyria_chronicles_4.friendship;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.TreeSet;
 
 import static java.util.Collections.disjoint;
+import static java.util.Collections.min;
 import static java.util.stream.Collectors.joining;
 
 @Log4j2
@@ -33,6 +35,14 @@ public final class Freundeskreis {
 
     public boolean hatKeineÜberschneidungMit(Freundeskreis freundeskreis) {
         return !hatÜberschneidungMit(freundeskreis);
+    }
+
+    public boolean enthältNiemandenAus(Collection<Einheit> einheitenBereitsTeilEinerTruppengeschichte) {
+        return Collections.disjoint(freunde, einheitenBereitsTeilEinerTruppengeschichte);
+    }
+
+    public boolean anzahlEinheitenBeträgtMindestens(int mindestanzahl) {
+        return freunde.size() >= mindestanzahl;
     }
 
     @Override
